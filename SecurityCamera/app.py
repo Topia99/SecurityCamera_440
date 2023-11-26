@@ -5,20 +5,12 @@ import io
 
 app = Flask(__name__)
 
-# Global flag to track camera usage
-camera_in_use = False
+
 
 def generate():
-    global camera_in_use
-
-    if camera_in_use:
-        print("Camera already in use.")
-        return
-
-    camera_in_use = True
 
     with picamera.PiCamera() as camera:
-        camera.resolution = (640, 480)
+        camera.resolution = (820, 500)
         camera.framerate = 24
         time.sleep(2)  # Camera warm-up time
 
@@ -30,7 +22,6 @@ def generate():
             stream.seek(0)
             stream.truncate()
 
-    camera_in_use = False
 
 @app.route('/')
 def index():
@@ -42,5 +33,5 @@ def video_feed():
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
-    app.run(host='10.66.45.45.179', port=8000, debug=True)
+    app.run(host='10.66.45.179', port=8000, debug=True)
 
