@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 import time
 import datetime
 import picamera
-import Adafruit_DHT
+# import Adafruit_DHT
 
 # GPIO Mode (BOARD / BCM)
 GPIO.setmode(GPIO.BCM)
@@ -19,7 +19,7 @@ GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
 GPIO.setup(GPIO_ECHO, GPIO.IN)
 
 # DHT sensor setup
-sensor = Adafruit_DHT.DHT11
+# sensor = Adafruit_DHT.DHT11
 
 # Initialize camera
 camera = picamera.PiCamera()

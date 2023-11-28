@@ -2,6 +2,8 @@ from flask import Flask, render_template, Response
 import picamera
 import time
 import io
+import threading
+import os
 
 app = Flask(__name__)
 
@@ -28,5 +30,15 @@ def video_feed():
     return Response(generate(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
+def run_server():
+    app.run(host='0.0.0.0', port=8000, debug=True)
+
+def listen_for_exit():
+    while True:
+        if input() == 'q':
+            print("Exiting...")
+            os._exit(0)
+
 if __name__ == '__main__':
-    app.run(host='10.66.45.179', port=8000, debug=True)
+    threading.Thread(target=run_server).start()
+    listen_for_exit()
