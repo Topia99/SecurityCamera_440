@@ -1,27 +1,26 @@
-# SecurityCamera_440
-
-
-hunter@raspberrypi:~/Desktop/SecurityCamera_440/SecurityCamera $ python3 liveStream.py
- * Serving Flask app 'liveStream'
+hunter@raspberrypi:~/Desktop/SecurityCamera_440/SecurityCamera $ python app.py
+ * Serving Flask app 'app'
  * Debug mode: on
 WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
  * Running on http://10.66.45.179:8000
 Press CTRL+C to quit
- * Restarting with stat
-mmal: mmal_vc_port_enable: failed to enable port vc.null_sink:in:0(OPQV): ENOSPC
-mmal: mmal_port_enable: failed to enable connected port (vc.null_sink:in:0(OPQV))0x18037e0 (ENOSPC)
-mmal: mmal_connection_enable: output port couldn't be enabled
+Exception in thread Thread-1:
 Traceback (most recent call last):
-  File "/home/hunter/Desktop/SecurityCamera_440/SecurityCamera/liveStream.py", line 10, in <module>
-    camera = picamera.PiCamera()
-  File "/usr/lib/python3/dist-packages/picamera/camera.py", line 433, in __init__
-    self._init_preview()
-  File "/usr/lib/python3/dist-packages/picamera/camera.py", line 512, in _init_preview
-    self._preview = PiNullSink(
-  File "/usr/lib/python3/dist-packages/picamera/renderers.py", line 558, in __init__
-    self.renderer.inputs[0].connect(source).enable()
-  File "/usr/lib/python3/dist-packages/picamera/mmalobj.py", line 2210, in enable
-    mmal_check(
-  File "/usr/lib/python3/dist-packages/picamera/exc.py", line 184, in mmal_check
-    raise PiCameraMMALError(status, prefix)
-picamera.exc.PiCameraMMALError: Failed to enable connection: Out of resources
+  File "/usr/lib/python3.9/threading.py", line 954, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.9/threading.py", line 892, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/hunter/Desktop/SecurityCamera_440/SecurityCamera/app.py", line 34, in run_server
+    app.run(host='0.0.0.0', port=8000, debug=True)
+  File "/home/hunter/.local/lib/python3.9/site-packages/flask/app.py", line 612, in run
+    run_simple(t.cast(str, host), port, self, **options)
+  File "/home/hunter/.local/lib/python3.9/site-packages/werkzeug/serving.py", line 1099, in run_simple
+    run_with_reloader(
+  File "/home/hunter/.local/lib/python3.9/site-packages/werkzeug/_reloader.py", line 439, in run_with_reloader
+    signal.signal(signal.SIGTERM, lambda *args: sys.exit(0))
+  File "/usr/lib/python3.9/signal.py", line 47, in signal
+    handler = _signal.signal(_enum_to_int(signalnum), _enum_to_int(handler))
+ValueError: signal only works in main thread of the main interpreter
+
