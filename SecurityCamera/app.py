@@ -31,7 +31,7 @@ def video_feed():
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 def run_server():
-    app.run(host='0.0.0.0', port=8000, debug=True)
+    app.run(host='10.66.45.179', port=8000, debug=True, use_reloader=False)
 
 def listen_for_exit():
     while True:
